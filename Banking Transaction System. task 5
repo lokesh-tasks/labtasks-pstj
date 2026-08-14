@@ -1,0 +1,37 @@
+import java.util.Scanner;
+class Bank {
+int balance = 0;
+void deposit(int money) {
+balance = balance + money;
+}
+void withdraw(int money) {
+balance = balance - money;
+}
+}
+public class Main {
+public static void main(String[] args) {
+Scanner sc = new Scanner(System.in);
+Bank bank = new Bank();
+int n = sc.nextInt();
+for (int i = 0; i < n; i++) {
+String operation = sc.next();
+int money = sc.nextInt();
+if (operation.equals("Deposit")) {
+bank.deposit(money);
+}
+else if (operation.equals("Withdraw")) {
+bank.withdraw(money);
+}
+}
+System.out.println(bank.balance);
+}
+}
+
+
+ Input:
+3
+Deposit 4000
+Withdraw 2000
+Deposit 1000
+ Output:
+3000
