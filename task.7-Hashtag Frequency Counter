@@ -20,12 +20,14 @@ public class Main {
 
 
 Input
-5 4
-1 2
-2 3
-3 4
-4 5
-1 5
+3
+Bike 10
+Cab 15
+Auto 8
+
 
 Output
-YES
+50
+180
+96
+
