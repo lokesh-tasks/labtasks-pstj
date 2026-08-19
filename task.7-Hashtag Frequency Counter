@@ -20,14 +20,18 @@ public class Main {
 
 
 Input
-3
-Bike 10
-Cab 15
-Auto 8
+5
+java
+python
+java
+ai
+python
+
 
 
 Output
-50
-180
-96
+java 2
+python 2
+ai 1
+
 
