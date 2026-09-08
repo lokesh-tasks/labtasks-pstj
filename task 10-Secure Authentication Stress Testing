@@ -1,0 +1,55 @@
+import java.io.*;
+import java.util.*;
+public class Solution {
+    static boolean validateLogin(String username, String password) {
+        if (username.length() < 3 || username.length() > 20) {
+            return false;
+        }
+        if (password.length() < 6 || password.length() > 20) {
+            return false;
+        }
+        if (username.equals("admin") && password.equals("admin123")) {
+            return true;
+        }
+        return false;
+    }
+    public static void main(String[] args) throws Exception {
+        BufferedReader br =
+                new BufferedReader(new InputStreamReader(System.in));
+        int n = Integer.parseInt(br.readLine().trim());
+        for (int i = 0; i < n; i++) {
+            String line = br.readLine();
+            while (line != null && line.trim().isEmpty()) {
+                line = br.readLine();
+            }
+
+            String[] input = line.trim().split("\\s+");
+
+            String username = input[0];
+            String password = input[1];
+
+            try {
+                if (validateLogin(username, password)) {
+                    System.out.println("SUCCESS");
+                } else {
+                    System.out.println("FAILURE");
+                }
+            } catch (Exception e) {
+                System.out.println("FAILURE");
+            }
+        }
+
+        br.close();
+    }
+}
+
+
+Input
+3
+admin admin123
+ab 123
+user pass
+Output
+SUCCESS
+FAILURE
+FAILURE
