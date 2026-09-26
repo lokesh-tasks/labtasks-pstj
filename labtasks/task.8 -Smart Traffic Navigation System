@@ -36,9 +36,9 @@ public class Main {
         }
 
         if (found)
-            System.out.println("ROUTE FOUND");
+            System.out.println("yes");
         else
-            System.out.println("NO ROUTE");
+            System.out.println("NO");
         sc.close();
     }
 }
