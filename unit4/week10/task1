@@ -1,0 +1,100 @@
+import java.util.*;
+
+class Product {
+    int id;
+    String name;
+    double price;
+
+    Product(int id, String name, double price) {
+        this.id = id;
+        this.name = name;
+        this.price = price;
+    }
+
+    public String toString() {
+        return id + " " + name + " " + price;
+    }
+}
+
+class Order {
+    int orderId;
+    String item;
+    int priority;
+
+    Order(int orderId, String item, int priority) {
+        this.orderId = orderId;
+        this.item = item;
+        this.priority = priority;
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        ArrayList<Product> products = new ArrayList<>();
+        HashMap<Integer, Product> productMap = new HashMap<>();
+        PriorityQueue<Order> orders =
+            new PriorityQueue<>((a, b) -> a.priority - b.priority);
+
+        int n = sc.nextInt();
+
+        for (int i = 0; i < n; i++) {
+            int id = sc.nextInt();
+            String name = sc.next();
+            double price = sc.nextDouble();
+
+            Product p = new Product(id, name, price);
+            products.add(p);
+            productMap.put(id, p);
+        }
+
+        int searchId = sc.nextInt();
+        Product found = productMap.get(searchId);
+
+        if (found != null) {
+            System.out.println("Product Found: " + found);
+        } else {
+            System.out.println("Product Not Found");
+        }
+
+        int m = sc.nextInt();
+
+        for (int i = 0; i < m; i++) {
+            int orderId = sc.nextInt();
+            String item = sc.next();
+            int priority = sc.nextInt();
+
+            orders.add(new Order(orderId, item, priority));
+        }
+
+        System.out.println("Orders Processed:");
+
+        while (!orders.isEmpty()) {
+            Order o = orders.poll();
+            System.out.println(o.orderId + " " + o.item
+                               + " " + o.priority);
+        }
+
+        sc.close();
+    }
+}
+
+
+input:
+3
+101 Laptop 55000
+102 Mouse 500
+103 Keyboard 1500
+102
+3
+201 Laptop 2
+202 Mouse 1
+203 Keyboard 3
+
+output:
+Product Found: 102 Mouse 500.0
+Orders Processed:
+202 Mouse 1
+201 Laptop 2
+203 Keyboard 3
