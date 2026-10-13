@@ -1,0 +1,52 @@
+import java.util.*;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        int n = sc.nextInt();
+        int[] nums = new int[n];
+
+        for (int i = 0; i < n; i++) {
+            nums[i] = sc.nextInt();
+        }
+
+        HashMap<Integer, Integer> freq = new HashMap<>();
+        HashMap<Integer, Integer> first = new HashMap<>();
+        int degree = 0;
+        int minLength = n;
+
+        for (int i = 0; i < n; i++) {
+            int num = nums[i];
+
+            if (!first.containsKey(num)) {
+                first.put(num, i);
+            }
+
+            int count = freq.getOrDefault(num, 0) + 1;
+            freq.put(num, count);
+
+            degree = Math.max(degree, count);
+        }
+
+        for (int i = 0; i < n; i++) {
+            int num = nums[i];
+
+            if (freq.get(num) == degree) {
+                int length = i - first.get(num) + 1;
+                minLength = Math.min(minLength, length);
+            }
+        }
+
+        System.out.println(minLength);
+        sc.close();
+    }
+}
+
+
+input:
+6
+1 2 2 3 1 4
+
+output:
+2
