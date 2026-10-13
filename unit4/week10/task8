@@ -1,0 +1,46 @@
+import java.util.*;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        HashSet<String> s1 = new HashSet<>();
+        HashSet<String> s2 = new HashSet<>();
+
+        int n = sc.nextInt();
+        sc.nextLine();
+
+        for (int i = 0; i < n; i++) {
+            s1.add(sc.nextLine());
+        }
+
+        int m = sc.nextInt();
+        sc.nextLine();
+
+        for (int i = 0; i < m; i++) {
+            s2.add(sc.nextLine());
+        }
+
+        s1.retainAll(s2);
+
+        System.out.println("Common Subjects:");
+        System.out.println(s1);
+
+        sc.close();
+    }
+}
+
+
+input:
+3
+Java
+Python
+DBMS
+3
+Python
+DBMS
+Networks
+
+output:
+Common Subjects:
+[DBMS, Python]
