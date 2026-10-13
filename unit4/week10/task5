@@ -1,0 +1,95 @@
+import java.util.*;
+
+class Node {
+    String song;
+    Node next;
+
+    Node(String song) {
+        this.song = song;
+        next = null;
+    }
+}
+
+public class Main {
+    Node head = null;
+
+    void addSong(String song) {
+        Node newNode = new Node(song);
+
+        if (head == null) {
+            head = newNode;
+        } else {
+            Node temp = head;
+
+            while (temp.next != null) {
+                temp = temp.next;
+            }
+
+            temp.next = newNode;
+        }
+    }
+
+    void removeSong(String song) {
+        if (head == null)
+            return;
+
+        if (head.song.equals(song)) {
+            head = head.next;
+            return;
+        }
+
+        Node temp = head;
+
+        while (temp.next != null &&
+               !temp.next.song.equals(song)) {
+            temp = temp.next;
+        }
+
+        if (temp.next != null) {
+            temp.next = temp.next.next;
+        }
+    }
+
+    void display() {
+        Node temp = head;
+
+        System.out.println("Playlist:");
+
+        while (temp != null) {
+            System.out.println(temp.song);
+            temp = temp.next;
+        }
+    }
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        Main playlist = new Main();
+
+        int n = sc.nextInt();
+        sc.nextLine();
+
+        for (int i = 0; i < n; i++) {
+            playlist.addSong(sc.nextLine());
+        }
+
+        String remove = sc.nextLine();
+        playlist.removeSong(remove);
+
+        playlist.display();
+
+        sc.close();
+    }
+}
+
+input:
+3
+SongA
+SongB
+SongC
+SongB
+
+output:
+Playlist:
+SongA
+SongC
+
