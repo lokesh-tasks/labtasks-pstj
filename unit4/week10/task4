@@ -1,0 +1,54 @@
+import java.util.*;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        ArrayList<Integer> marks = new ArrayList<>();
+
+        System.out.println("Enter marks (-1 to stop):");
+
+        while (true) {
+            int mark = sc.nextInt();
+
+            if (mark == -1)
+                break;
+
+            marks.add(mark);
+        }
+
+        System.out.println("Student Marks: " + marks);
+
+        if (!marks.isEmpty()) {
+            int max = Collections.max(marks);
+            int sum = 0;
+
+            for (int m : marks) {
+                sum += m;
+            }
+
+            double average = (double) sum / marks.size();
+
+            System.out.println("Highest Mark: " + max);
+            System.out.println("Average Mark: " + average);
+        } else {
+            System.out.println("No marks entered.");
+        }
+
+        sc.close();
+    }
+}
+
+
+input:
+85
+90
+78
+92
+88
+-1
+
+output:
+Enter marks (-1 to stop):
+Student Marks: [85, 90, 78, 92, 88]
+Highest Mark: 92
+Average Mark: 86.6
